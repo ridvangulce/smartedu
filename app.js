@@ -1,5 +1,5 @@
 const express = require('express');
-
+const pageRoute = require('./routes/pageRoute.js');
 const app = express();
 
 //Template Engine
@@ -13,16 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routers
-app.get('/', (req, res) => {
-   res.status(200).render('index', {
-      page_name: 'index',
-   });
-});
-app.get('/about', (req, res) => {
-   res.status(200).render('about', {
-      page_name: 'about',
-   });
-});
+app.use('/', pageRoute);
 
 const port = 5001;
 app.listen(port, () => {
