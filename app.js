@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const pageRoute = require('./routes/pageRoute.js');
 const courseRoute = require('./routes/courseRoute.js');
 const categoryRoute = require('./routes/categoryRoute.js');
-var bodyParser = require("body-parser");  //parses incoming requests in middleware
+const userRoute = require('./routes/userRoute.js');
+var bodyParser = require('body-parser'); //parses incoming requests in middleware
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', pageRoute);
 app.use('/courses', courseRoute);
 app.use('/categories', categoryRoute);
+app.use('/users', userRoute);
 
 const port = 5001;
 app.listen(port, () => {
